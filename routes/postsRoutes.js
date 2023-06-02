@@ -15,6 +15,12 @@ postsRoutes.post("/", (req, res)=>{
     res.send("crear post");
 })
 
+postsRoutes.put("/:id", (req, res)=>{
+    res.send("update post by id")
+})
 
+postsRoutes.delete("/:id", (req, res)=>{
+    res.send("delete post by id")
+})
 
 export default postsRoutes;
