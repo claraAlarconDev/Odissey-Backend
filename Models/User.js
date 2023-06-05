@@ -4,6 +4,20 @@ import connectionDb from "../dbConnection/connectionDb.js";
 class User extends Model {};
 
 User.init({
+    userPassword:{
+        type: Dt.INTEGER,
+        allowNull:false,
+        validate:{
+            notEmpty: true
+        },
+        get(){
+            const password = this.getDataValue('userPassword');
+            return password? password : null;
+        }, 
+        set(valor){
+            this.setDataValue('userPassword', valor);
+        }
+    },
     userName:{
         type: Dt.STRING(30),
         allowNull: false,
