@@ -11,7 +11,7 @@ app.use(cors());
 app.use(routes);
 const port = process.env.SERVER_PORT;
 
-await connectionDb.sync({force: false}).then(()=>{
+await connectionDb.sync({alter: true}).then(()=>{
     app.listen(port, ()=>{
         console.log("server ok http://localhost:8080");
     })
