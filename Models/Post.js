@@ -46,8 +46,8 @@ Post.init({
             this.setDataValue('parrafo', valor);
         }
     },
-    idUser:{
-        type:Dt.INTEGER,
+    userEmail:{
+        type:Dt.STRING,
     } 
     //Faltaria la asociacion con user N:M posts
 },

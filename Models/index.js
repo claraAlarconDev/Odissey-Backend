@@ -2,10 +2,10 @@ import Post from "./Post.js";
 import User from "./User.js";
 
 User.hasMany(Post, {
-    foreignKey:"idUser"
+    foreignKey:"userEmail"
 });
 Post.belongsTo(User, {
-    foreignKey: "idUser"
+    foreignKey:"userEmail"
 });
 
 export{Post, User};
