@@ -1,7 +1,11 @@
-import sequelize from "sequelize";
 import Post from "./Post.js";
 import User from "./User.js";
 
-User.hasMany(Post);
-Post.belongsTo(User, {});
+User.hasMany(Post, {
+    foreignKey:"idUser"
+});
+Post.belongsTo(User, {
+    foreignKey: "idUser"
+});
 
+export{Post, User};

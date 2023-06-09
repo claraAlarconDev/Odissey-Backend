@@ -1,4 +1,4 @@
-import express from "express";
+import express, { urlencoded } from "express";
 import "dotenv/config.js";
 import routes from "./routes/routes.js";
 import connectionDb from "./dbConnection/connectionDb.js";
@@ -11,7 +11,12 @@ app.use(cors());
 app.use(routes);
 const port = process.env.SERVER_PORT;
 
-await connectionDb.sync({force: false}).then(()=>{
+//middleware de aplicacion
+app.use(express.json());
+//tengo que codificar las imagenes si o si
+app.use(express.urlencoded({extended:true}))
+
+await connectionDb.sync({force: true}).then(()=>{
     app.listen(port, ()=>{
         console.log("server ok http://localhost:8080");
     })

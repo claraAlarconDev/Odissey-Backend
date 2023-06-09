@@ -50,7 +50,8 @@ User.init({
     }
 }, {
     sequelize: connectionDb,
-    modelName: 'User'
+    modelName: 'User',
+    timestamps:false,
 });
 
 export default User;
