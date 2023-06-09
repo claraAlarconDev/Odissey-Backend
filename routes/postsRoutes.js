@@ -1,15 +1,12 @@
 import {Router} from "express";
-import Post  from "../Models/Post.js";
+import PostController from "../Controllers/PostController.js"
 
 const postsRoutes = Router();
+const postController = new PostController();
 
-postsRoutes.get("/", (req, res)=>{
-    res.send("get all posts")
-})
+postsRoutes.get("/", postController.getAllPost)
 
-postsRoutes.get("/:id", (req, res)=>{
-    res.send("get post by id")
-})
+postsRoutes.get("/:id", postController.getPostById)
 
 postsRoutes.post("/", (req, res)=>{
     res.send("crear post");

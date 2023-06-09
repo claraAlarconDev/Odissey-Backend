@@ -5,7 +5,7 @@ class User extends Model {};
 
 User.init({
     userPassword:{
-        type: Dt.INTEGER,
+        type: Dt.STRING,
         allowNull:false,
         validate:{
             notEmpty: true
@@ -50,7 +50,8 @@ User.init({
     }
 }, {
     sequelize: connectionDb,
-    modelName: 'User'
+    modelName: 'User',
+    timestamps:false,
 });
 
 export default User;
