@@ -5,7 +5,7 @@ class User extends Model {};
 
 User.init({
     userPassword:{
-        type: Dt.INTEGER,
+        type: Dt.STRING,
         allowNull:false,
         validate:{
             notEmpty: true

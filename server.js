@@ -15,7 +15,7 @@ app.use(express.json());
 //tengo que codificar las imagenes si o si
 app.use(express.urlencoded({extended:true}))
 
-await connectionDb.sync({force: true}).then(()=>{
+await connectionDb.sync({force: false}).then(()=>{
     app.listen(port, ()=>{
         console.log("server ok http://localhost:8080");
     })

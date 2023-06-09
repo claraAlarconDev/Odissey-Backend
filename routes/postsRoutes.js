@@ -4,9 +4,7 @@ import PostController from "../Controllers/PostController.js"
 const postsRoutes = Router();
 const postController = new PostController();
 
-postsRoutes.get("/", (req, res)=>{
-    res.send("get all posts")
-})
+postsRoutes.get("/", postController.getAllPost)
 
 postsRoutes.get("/:id", postController.getPostById)
 
