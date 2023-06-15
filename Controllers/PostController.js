@@ -20,7 +20,7 @@ class PostController{
         console.log("req: " + req);
         try {
             const {id} = req.params
-            const result = await Post.findAll({
+            const result = await Post.findOne({
                 where:{
                    id:id,
                 },
@@ -28,7 +28,7 @@ class PostController{
                 
             });
             console.log(result);
-            res.send({success:true, message: "post encontrado", result})
+            res.send(result)
         } catch (error) {
             res.status(400).send({success: false, result: error.message})
         }
