@@ -1,36 +1,36 @@
-import {Post} from "../Models/index.js"
+import { Post } from "../Models/index.js"
 
-class PostController{
-    constructor(){
+class PostController {
+    constructor() {
 
     };
-    getAllPost = async(req, res, next)=>{
+    getAllPost = async (req, res, next) => {
         try {
             const result = await Post.findAll({
-                attributes:["id", "titulo", "descripcion", "parrafo"]
+                attributes: ["id", "titulo", "descripcion", "parrafo"]
             });
-            if(result.length === 0) throw new Error("No se encontraron post")
+            if (result.length === 0) throw new Error("No se encontraron post")
             res
-            .send({succes: true, message: "posts encontrados", result});
+                .send({ succes: true, message: "posts encontrados", result });
         } catch (error) {
             res.status(400).send({ success: false, result: error.message });
         }
     };
-    getPostById = async(req, res, next)=>{
+    getPostById = async (req, res, next) => {
         console.log("req: " + req);
         try {
             const {id} = req.params
             const result = await Post.findOne({
                 where:{
-                   id:id,
+                   id:id
                 },
-                attributes:["id", "titulo", "descripcion", "parrafo"]
-                
+                attributes: ["id", "titulo", "descripcion", "parrafo"]
+
             });
             console.log(result);
-            res.send(result)
+            res.send({ success: true, message: "post encontrado", result })
         } catch (error) {
-            res.status(400).send({success: false, result: error.message})
+            res.status(400).send({ success: false, result: error.message })
         }
     }
 }
