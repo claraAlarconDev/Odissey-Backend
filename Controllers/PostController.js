@@ -28,7 +28,7 @@ class PostController{
                 
             });
             console.log(result);
-            res.send(result)
+            res.send({ success: true, message: "post encontrado", result })
         } catch (error) {
             res.status(400).send({success: false, result: error.message})
         }
