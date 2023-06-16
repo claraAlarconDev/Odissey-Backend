@@ -19,10 +19,10 @@ class PostController {
     getPostById = async (req, res, next) => {
         console.log("req: " + req);
         try {
-            const { id } = req.params
+            const {id} = req.params
             const result = await Post.findOne({
-                where: {
-                    id: id,
+                where:{
+                   id:id
                 },
                 attributes: ["id", "titulo", "descripcion", "parrafo"]
 
