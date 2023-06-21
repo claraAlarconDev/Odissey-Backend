@@ -8,16 +8,10 @@ postsRoutes.get("/", postController.getAllPost)
 
 postsRoutes.get("/:id", postController.getPostById)
 
-postsRoutes.post("/", (req, res)=>{
-    res.send("crear post");
-})
+postsRoutes.post("/", postController.createPost)
 
-postsRoutes.put("/:id", (req, res)=>{
-    res.send("update post by id")
-})
+postsRoutes.put("/:id", postController.updatePostById)
 
-postsRoutes.delete("/:id", (req, res)=>{
-    res.send("delete post by id")
-})
+postsRoutes.delete("/:id", postController.deletePostById)
 
 export default postsRoutes;
