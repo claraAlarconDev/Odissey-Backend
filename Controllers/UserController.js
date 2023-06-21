@@ -19,8 +19,8 @@ class UserController{
         console.log("req: " + req);
 
         try {
-            const {id} = req.params
-            const result = await User.findAll({
+            const { id }  = req.params
+            const result = await User.findOne({
                 where:{
                    id:id,
                 },
@@ -43,6 +43,18 @@ class UserController{
             .send({ success: true, message: "Usuario creado con exito", result});
         } catch (error) {
             res.status(400).send({ success: false, result: error.message });
+        }
+    };
+    login = async (req, res, next)=>{
+        
+        try {
+            const {userPassword, userEmail} = req.body;
+            const found = await User.findByPk(userEmail);
+
+            if(found === null) throw new Error("no tiene cuenta")
+            res.status(200).send({succes: true, message: "Si es un usuario"})
+        } catch (error) {
+            res.status(400).send({succes:false, message: error.message});
         }
     }
 }
