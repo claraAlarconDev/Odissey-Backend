@@ -48,10 +48,15 @@ class UserController{
     login = async (req, res, next)=>{
         
         try {
-            const {userPassword, userEmail} = req.body;
-            const found = await User.findByPk(userEmail);
+            const {userEmail, userPassword} = req.body;
+            const found = await User.findOne({
+                where: {
+                    userEmail: userEmail,
+                    userPassword: userPassword
+                }
+        });
 
-            if(found === null) throw new Error("no tiene cuenta")
+            if(!found) throw new Error("no tiene cuenta")
             res.status(200).send({succes: true, message: "Si es un usuario"})
         } catch (error) {
             res.status(400).send({succes:false, message: error.message});
