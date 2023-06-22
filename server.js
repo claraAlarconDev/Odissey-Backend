@@ -11,8 +11,8 @@ const port = process.env.SERVER_PORT;
 
 //middleware de aplicacion
 app.use(cors());
-app.use(routes);
 app.use(express.json());
+app.use(routes);
 //tengo que codificar las imagenes si o si
 app.use(express.urlencoded({ extended: true }))
 
