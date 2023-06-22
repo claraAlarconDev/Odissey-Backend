@@ -46,15 +46,15 @@ Post.init({
             this.setDataValue('parrafo', valor);
         }
     },
-    userEmail:{
-        type:Dt.STRING,
-    } 
+    userEmail: {
+        type: Dt.STRING,
+    }
     //Faltaria la asociacion con user N:M posts
 },
     {
         sequelize: connectionDb,
         modelName: 'Post',
-        timestamps:false,
+        timestamps: false,
     });
 
 export default Post;
