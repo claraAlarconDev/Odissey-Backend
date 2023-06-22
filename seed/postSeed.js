@@ -1,8 +1,10 @@
-import {Post} from "../Models/index.js";
+import { Post } from "../Models/index.js";
 
-const postSeed = async () =>{
+const postSeed = async () => {
     try {
-        await Post.bulkCreate([{titulo: "Titulo1", descripcion: "descripcion1", parrafo: "parrafo1", userEmail:"user1@email.com" }]);
+        if (await Post.count() == 0) {
+            await Post.bulkCreate([{ titulo: "Titulo1", descripcion: "descripcion1", parrafo: "parrafo1", userEmail: "a@a.com" }]);
+        }
     } catch (error) {
         console.log(error.message);
     }
