@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 await connectionDb
-    .sync({ alter: true })
+    .sync({ alter: false })
     .then(() => {
         app.listen(port, () => {
             console.log("server ok http://localhost:8080");
