@@ -29,7 +29,52 @@ class PostController {
         } catch (error) {
             res.status(400).send({ success: false, result: error.message })
         }
+    };
+    createPost = async (req, res, next) => {
+        try {
+            const {titulo, descripcion, parrafo, userEmail} = req.body;
+            console.log(req.body);
+            const result = await Post.create({titulo, descripcion, parrafo, userEmail});
+
+            if(!result.dataValues) throw new Error("No se pudo crear el post");
+            res
+            .status(200)
+            .send({success: true, message: "Post creado con exito", result})
+        } catch (error) {
+            res.status(400).send({ success: false, result: error.message });
+        }
+    };
+    deletePostById = async (req, res, next) =>{
+        try {
+            const {id} = req.params;
+            console.log("id: "+ id);
+            const result = await Post.destroy({
+                where: {
+                    id: id
+                }
+            })
+            if(!result.dataValues) throw new Error("No se pudo eliminar el post")
+            res.status.send({success: true, message: "Post eliminado", result});
+        } catch (error) {
+            res.status(400).send({ success: false, result: error.message });
+        }
+    };
+    updatePostById = async (req,res, next) =>{
+        try {
+            const {id} = req.params;
+            //const {titulo} = req.params.titulo;
+            const result = await Post.update({
+                where:{
+                    id:id
+                }
+            })
+            if(!result.dataValues) throw new Error("No se pudo actualizar el post")
+            res.status(200).send({succes: true, message: "Se pudo actualizar el post"})
+        } catch (error) {
+            res.status(400).send({ success: false, result: error.message });
+        }
     }
+
 }
 
 export default PostController;
