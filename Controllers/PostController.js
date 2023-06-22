@@ -36,6 +36,7 @@ class PostController {
     createPost = async (req, res, next) => {
         try {
             const {titulo, descripcion, parrafo, userEmail} = req.body;
+            console.log(req.body);
             const result = await Post.create({titulo, descripcion, parrafo, userEmail});
 
             if(!result.dataValues) throw new Error("No se pudo crear el post");
